@@ -1,8 +1,7 @@
 import ping from '../images/ping.png'
 import Card from './Card';
 import { api } from '../utils/Api';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function Main({
   onEditProfile, 
@@ -48,14 +47,15 @@ function Main({
         </div>
         <button className="profile__add" type="button" onClick={onAddPlace}></button>
       </section>
-      <section class="elements">
+      <section className="elements">
           {cards.map((item) => (
             <Card 
-            src={item.link}
-            like={item.likes.length}
-            title={item.name}
-            alt={item.name}
-            onClick={onCardClick}
+              src={item.link}
+              like={item.likes.length}
+              title={item.name}
+              alt={item.name}
+              onClick={onCardClick}
+              key={item._id}
             />
           ))}
       </section>
