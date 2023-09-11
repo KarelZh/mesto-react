@@ -27,7 +27,6 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null)
   function handleCardClick(card) {
     setSelectedCard(card)
-    console.log(card)
   }
   return (
     <>
