@@ -8,33 +8,14 @@ function Main({
   onEditProfile, 
   onAddPlace, 
   onEditAvatar,
-  onCardClick
+  onCardClick,
+  onCardLike,
+  deleteCardLike,
+  card,
+  onCardDelete
   }) {
     const currentMain = useContext(CurrentContext);
-    
-    
-    //const [userName, setUserName] = useState('');
-    //const [userDescription, setUserDescription] = useState('');
-    //const [userAvatar, setUserAvatar] = useState('');
-    const [cards, setCards] = useState([])
-   // useEffect(() => {
-   //   api.getUserInfo()
-   //   .then((item) => {
-   //     setUserName(item.name)
-   //     setUserDescription(item.about)
-   //     setUserAvatar(item.avatar)
-   //   }).catch((err) => {
-   //     console.error(err)
-   //   })
-   // }, [])
-    useEffect(() => {
-      api.getInitialCards()
-      .then((res) => {
-        setCards(res)
-      }).catch((err) => {
-        console.error(err)
-      })
-    }, [])
+
   return(
     <main className="content">
       <section className="profile">
@@ -52,7 +33,7 @@ function Main({
         <button className="profile__add" type="button" onClick={onAddPlace}></button>
       </section>
       <section className="elements">
-          {cards.map((item) => (
+          {card.map((item) => (
             <Card 
               src={item.link}
               likeLength={item.likes.length}
@@ -62,6 +43,10 @@ function Main({
               key={item._id}
               idCard={item.owner._id}
               likes={item.likes}
+              onCardLike={onCardLike}
+              deleteLikeCard={deleteCardLike}
+              id={item._id}
+              onCardDelete={onCardDelete}
             />
           ))}
       </section>
