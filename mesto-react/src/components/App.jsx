@@ -84,6 +84,8 @@ function App() {
         return n._id !== id
       })})
       console.log(res)
+    }).catch((err) => {
+      console.error(err)
     })
   }
   function handleUpdateAvatar(item) {
